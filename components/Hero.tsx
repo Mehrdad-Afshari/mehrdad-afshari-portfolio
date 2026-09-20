@@ -19,21 +19,21 @@ export default function Hero() {
           {/* Text */}
           <div>
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-blue-400">
-              Hi, I'm Mehrdad
+              AI Developer · Software & Database Developer
             </p>
 
             <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Building software.
+              Software engineering.
               <br />
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Exploring AI.
+                Generative AI.
               </span>
             </h1>
 
             <p className="mt-8 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-400">
-              MSc Computer Science student at the University of Rostock,
-              Germany. Interested in artificial intelligence, software
-              development, and building practical technology.
+              MSc Computer Science student at the University of Rostock, Germany,
+              with professional experience in software development, database
+              engineering, web development, and enterprise applications.
             </p>
 
             {/* Buttons */}
@@ -70,15 +70,19 @@ export default function Hero() {
               </a>
 
               <a
-                href="#"
+                href="https://linkedin.com/in/mehrdadafshari"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="transition hover:text-white"
+                aria-label="LinkedIn"
               >
                 <FaLinkedinIn size={20} />
               </a>
 
               <a
-                href="mailto:mehrdad.afshari@gmail.com"
+                href="mailto:afshari@outlook.com"
                 className="transition hover:text-white"
+                aria-label="Email"
               >
                 <Mail size={20} />
               </a>

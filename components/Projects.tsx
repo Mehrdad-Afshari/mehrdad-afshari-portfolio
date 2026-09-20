@@ -1,0 +1,73 @@
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/data/projects";
+
+export default function Projects() {
+  return (
+    <section
+      id="projects"
+      className="bg-[#fafafa] py-24 text-[#111111] dark:bg-[#080b12] dark:text-white"
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mb-16">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-blue-600 dark:text-blue-400">
+            03 — Projects
+          </p>
+
+          <h2 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
+            Things I build and explore.
+          </h2>
+
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
+            A selection of academic and personal projects focused on software
+            development, algorithms, and artificial intelligence.
+          </p>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-2">
+          {projects.map((project) => (
+            <article
+              key={project.id}
+              className="group rounded-3xl border border-black/10 bg-white p-8 transition duration-300 hover:-translate-y-1 hover:border-black/20 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20"
+            >
+              <div className="flex items-start justify-between gap-6">
+                <div>
+                  {project.featured && (
+                    <span className="mb-4 inline-block rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-600 dark:text-blue-400">
+                      Featured Project
+                    </span>
+                  )}
+
+                  <h3 className="text-2xl font-semibold tracking-tight">
+                    {project.title}
+                  </h3>
+                </div>
+
+                <div className="rounded-full border border-black/10 p-2 dark:border-white/10">
+                  <ArrowUpRight
+                    size={18}
+                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </div>
+              </div>
+
+              <p className="mt-6 leading-7 text-gray-600 dark:text-gray-400">
+                {project.description}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-2">
+                {project.technologies.map((technology) => (
+                  <span
+                    key={technology}
+                    className="rounded-full border border-black/10 bg-[#fafafa] px-3 py-1.5 text-sm text-gray-700 dark:border-white/10 dark:bg-white/5 dark:text-gray-300"
+                  >
+                    {technology}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
