@@ -96,7 +96,7 @@ export default function Hero() {
 
               <div className="relative flex h-[500px] w-[400px] items-end justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
                 <div className="pb-10 text-center text-sm text-gray-500">
-                  Your professional photo
+                  
                 </div>
               </div>
             </div>
