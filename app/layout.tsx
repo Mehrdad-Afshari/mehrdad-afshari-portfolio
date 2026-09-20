@@ -8,9 +8,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Mehrdad Afshari | AI & Software Developer",
+  title: "Mehrdad Afshari | AI Developer",
   description:
-    "Personal portfolio of Mehrdad Afshari, MSc Computer Science student at the University of Rostock, focused on AI and software development.",
+    "Mehrdad Afshari — AI Developer, Software & Database Developer and MSc Computer Science student at the University of Rostock.",
+  keywords: [
+    "Mehrdad Afshari",
+    "AI Developer",
+    "Software Developer",
+    "Generative AI",
+    "Computer Science",
+    "Rostock",
+    "Germany",
+  ],
 };
 
 export default function RootLayout({

@@ -5,6 +5,19 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(true);
+
+useEffect(() => {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme) {
+    setDarkMode(savedTheme === "dark");
+  }
+}, []);
+
+useEffect(() => {
+  document.documentElement.classList.toggle("dark", darkMode);
+  localStorage.setItem("theme", darkMode ? "dark" : "light");
+}, [darkMode]);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {

@@ -32,8 +32,8 @@ export default function Hero() {
 
             <p className="mt-8 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-400">
               MSc Computer Science student at the University of Rostock, Germany,
-              with professional experience in software development, database
-              engineering, web development, and enterprise applications.
+              with 13+ years of experience in software development, databases,
+              web development, and enterprise applications.
             </p>
 
             {/* Buttons */}
