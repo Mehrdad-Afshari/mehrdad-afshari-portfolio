@@ -1,5 +1,6 @@
 import { ArrowRight, Download, Mail } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -93,15 +94,18 @@ export default function Hero() {
           </div>
 
           {/* Photo */}
-          <div className="relative hidden justify-center lg:flex">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-3xl" />
+          <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-2xl shadow-black/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/30">
+            <div className="relative aspect-[4/5]">
+              <Image
+                src="/images/mehrdad-afshari.jpg"
+                alt="Mehrdad Afshari — AI Developer and MSc Computer Science student"
+                fill
+                priority
+                sizes="(max-width: 768px) 90vw, 420px"
+                className="object-cover object-[center_35%]"
+              />
 
-              <div className="relative flex h-[500px] w-[400px] items-end justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
-                <div className="pb-10 text-center text-sm text-gray-500">
-                  
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
             </div>
           </div>
 

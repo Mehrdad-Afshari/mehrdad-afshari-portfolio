@@ -19,8 +19,8 @@ export default function Projects() {
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
-            A selection of academic and personal projects focused on software
-            development, algorithms, and artificial intelligence.
+              A selection of academic and personal work across software engineering,
+              algorithms, and artificial intelligence.
           </p>
         </div>
 
