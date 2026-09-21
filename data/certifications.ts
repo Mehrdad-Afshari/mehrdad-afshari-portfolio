@@ -2,7 +2,7 @@ export type Certification = {
   id: string;
   name: string;
   issuer: string;
-  date: string;
+  date?: string;
   category: "AI & Generative AI" | "Cloud & Azure" | "AI Foundations";
   credentialId?: string;
   status?: "Completed" | "In Progress";
