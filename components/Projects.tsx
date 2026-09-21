@@ -11,7 +11,7 @@ export default function Projects() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-16">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-blue-600 dark:text-blue-400">
-            03 — Projects
+            04 — Projects
           </p>
 
           <h2 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">

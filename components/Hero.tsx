@@ -97,8 +97,8 @@ export default function Hero() {
           <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-2xl shadow-black/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/30">
             <div className="relative aspect-[4/5]">
               <Image
-                src="/images/mehrdad-afshari.jpg"
-                alt="Mehrdad Afshari, AI Developer and MSc Computer Science student at the University of Rostock"
+                src="/images/mehrdad-afshari.png"
+                alt="Mehrdad Afshari — AI Developer and MSc Computer Science student"
                 fill
                 priority
                 sizes="(max-width: 768px) 90vw, 420px"

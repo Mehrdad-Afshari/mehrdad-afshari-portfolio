@@ -7,6 +7,7 @@ import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Certifications from "@/components/Certifications";
 
 export default function Home() {
   return (
@@ -14,13 +15,20 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+
         <About />
+
         <Skills />
+
+        <Certifications />
+
         <Projects />
+
         <Experience />
+
         <Education />
+
         <Contact />
-        <Footer />
       </main>
     </>
   );
