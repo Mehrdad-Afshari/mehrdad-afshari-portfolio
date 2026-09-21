@@ -18,7 +18,7 @@ export default function Hero() {
 
           {/* Text */}
           <div>
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-blue-400">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-blue-600 dark:text-blue-400">
               AI Developer · Software & Database Developer
             </p>
 
@@ -51,7 +51,9 @@ export default function Hero() {
 
               <a
                 href="/cv/mehrdad-afshari-cv.pdf"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-medium transition hover:bg-white/10"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-black/10 px-6 py-3 font-medium text-[#111111] transition hover:bg-black/5 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
               >
                 <Download size={18} />
                 Download CV
@@ -64,7 +66,8 @@ export default function Hero() {
                 href="https://github.com/Mehrdad-Afshari"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition hover:text-white"
+                className="transition hover:text-black dark:hover:text-white"
+                aria-label="GitHub"
               >
                 <FaGithub size={20} />
               </a>
@@ -73,7 +76,7 @@ export default function Hero() {
                 href="https://linkedin.com/in/mehrdadafshari"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition hover:text-white"
+                className="transition hover:text-black dark:hover:text-white"
                 aria-label="LinkedIn"
               >
                 <FaLinkedinIn size={20} />
@@ -81,7 +84,7 @@ export default function Hero() {
 
               <a
                 href="mailto:afshari@outlook.com"
-                className="transition hover:text-white"
+                className="transition hover:text-black dark:hover:text-white"
                 aria-label="Email"
               >
                 <Mail size={20} />
