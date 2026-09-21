@@ -34,10 +34,29 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     };
   }
 
-  return {
-    title: `${project.title} | Mehrdad Afshari`,
+    return {
+    title: project.title,
+
     description: project.shortDescription,
-  };
+
+    alternates: {
+        canonical: `/projects/${project.id}`,
+    },
+
+    openGraph: {
+        type: "article",
+        url: `/projects/${project.id}`,
+        title: `${project.title} | Mehrdad Afshari`,
+        description: project.shortDescription,
+        siteName: "Mehrdad Afshari",
+    },
+
+    twitter: {
+        card: "summary_large_image",
+        title: `${project.title} | Mehrdad Afshari`,
+        description: project.shortDescription,
+    },
+    };
 }
 
 export default async function ProjectPage({

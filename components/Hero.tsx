@@ -98,7 +98,7 @@ export default function Hero() {
             <div className="relative aspect-[4/5]">
               <Image
                 src="/images/mehrdad-afshari.jpg"
-                alt="Mehrdad Afshari — AI Developer and MSc Computer Science student"
+                alt="Mehrdad Afshari, AI Developer and MSc Computer Science student at the University of Rostock"
                 fill
                 priority
                 sizes="(max-width: 768px) 90vw, 420px"
