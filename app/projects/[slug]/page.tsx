@@ -226,7 +226,7 @@ export default async function ProjectPage({
           </div>
 
           <div className="grid gap-5 md:grid-cols-2">
-            {project.algorithms.map((algorithm, index) => (
+            {project.algorithms?.map((algorithm, index) => (
               <article
                 key={algorithm.name}
                 className="rounded-3xl border border-black/10 bg-white p-7 dark:border-white/10 dark:bg-white/5"
@@ -270,7 +270,7 @@ export default async function ProjectPage({
           </div>
 
           <div className="grid gap-5 lg:grid-cols-3">
-            {project.results.map((result) => (
+            {project.results?.map((result) => (
               <article
                 key={result.map}
                 className="rounded-3xl border border-black/10 bg-[#fafafa] p-7 dark:border-white/10 dark:bg-white/5"
@@ -385,7 +385,7 @@ export default async function ProjectPage({
           </h2>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {project.limitations.map((limitation) => (
+            {project.limitations?.map((limitation) => (
               <div
                 key={limitation}
                 className="flex gap-3 rounded-2xl border border-black/10 p-5 dark:border-white/10"

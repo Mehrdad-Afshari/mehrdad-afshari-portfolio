@@ -18,19 +18,21 @@ export type Project = {
   type: string;
   technologies: string[];
   featured?: boolean;
+
   github?: string;
+  demo?: string;
 
   overview: string[];
   highlights: string[];
 
-  algorithms: {
+  algorithms?: {
     name: string;
     description: string;
   }[];
 
-  results: ProjectResult[];
+  results?: ProjectResult[];
 
-  limitations: string[];
+  limitations?: string[];
 };
 
 export const projects: Project[] = [
@@ -40,12 +42,12 @@ export const projects: Project[] = [
     title: "Sokoban Solver",
 
     shortDescription:
-      "A search-based Sokoban project exploring PDDL modelling, Python implementation, DFS optimisation, and deadlock detection.",
+      "An academic search-based Sokoban solver developed using Python and PDDL.",
 
     description:
-      "An academic project focused on modelling Sokoban as a planning and search problem and reducing the search space of depth-limited DFS through incremental improvements.",
+      "A university project focused on solving Sokoban levels using classical search algorithms, PDDL-based problem representation, and deadlock handling.",
 
-    type: "Academic Project",
+    type: "University Project",
 
     technologies: [
       "Python",
@@ -53,109 +55,124 @@ export const projects: Project[] = [
       "BFS",
       "DFS",
       "Search Algorithms",
-      "State-Space Search",
-      "Deadlock Detection",
     ],
 
     featured: true,
 
     overview: [
-      "Sokoban is a single-agent puzzle in which a player must push boxes onto predefined goal positions. Because boxes can be pushed but not pulled, an incorrect push can make a level unsolvable.",
-
-      "The project models Sokoban as a planning and search problem. The game rules, actions, states and goals were first described using PDDL and then implemented manually in Python.",
-
-      "The main focus of the project was reducing the search space of depth-limited DFS. The algorithm was improved incrementally by introducing a visited set, goal checking, corner-deadlock detection and wall-deadlock detection.",
-
-      "The final evaluation compared different DFS variants on multiple Sokoban maps to investigate how each improvement affected the number of explored states and the overall search behaviour.",
+      "Developed as part of the Algorithms in Game Environments course at the University of Rostock.",
+      "The project focuses on automatically solving Sokoban levels using classical search techniques.",
+      "The problem was represented using PDDL and supported by a Python-based solving workflow.",
+      "Different search strategies were evaluated while considering the characteristics of Sokoban states and deadlock situations.",
     ],
 
     highlights: [
-      "Formal Sokoban modelling with PDDL",
-      "Python-based Sokoban environment",
-      "Breadth-First Search investigation",
-      "Depth-limited Depth-First Search",
-      "Visited-state detection",
-      "Goal-state detection",
-      "Corner-deadlock detection",
-      "Wall-deadlock detection",
-      "Search-space evaluation",
-      "Evaluation across multiple maps",
+      "Breadth-First Search (BFS)",
+      "Depth-First Search (DFS)",
+      "PDDL problem representation",
+      "Deadlock handling",
+      "State-space search",
+      "Python implementation",
     ],
 
     algorithms: [
       {
         name: "Breadth-First Search",
         description:
-          "BFS was investigated as an initial search strategy. The experiments showed that the number of generated states grows very quickly, making it impractical for the later stages of this project.",
+          "Explores the state space level by level and can find a shortest solution when applicable.",
       },
       {
         name: "Depth-First Search",
         description:
-          "The project therefore focused on DFS, particularly depth-limited DFS, to provide better control over the search space and execution depth.",
+          "Explores solution paths deeply while controlling the search depth.",
       },
       {
-        name: "Visited-State Detection",
+        name: "Deadlock Detection",
         description:
-          "A visited set was introduced to prevent the algorithm from repeatedly exploring the same states through different action sequences.",
-      },
-      {
-        name: "Goal Checking",
-        description:
-          "A goal check was added so that the search could terminate immediately after reaching a solution instead of continuing to explore unnecessary branches.",
-      },
-      {
-        name: "Corner-Deadlock Detection",
-        description:
-          "States where a non-goal box becomes trapped in a corner are detected and pruned before successor states are generated.",
-      },
-      {
-        name: "Wall-Deadlock Detection",
-        description:
-          "The final version also detects wall-based deadlocks where a box cannot reach a goal along the relevant wall segment.",
-      },
-    ],
-
-    results: [
-      {
-        map: "Map 1",
-        maxDepth: 21,
-        visited: 275,
-        generated: 575,
-        skipped: 294,
-        cornerDeadlocks: 8,
-        wallDeadlocks: 9,
-        goal: "Yes",
-        runtime: "0.004388 s",
-      },
-      {
-        map: "Map 2",
-        maxDepth: 70,
-        visited: 1274,
-        generated: 3048,
-        skipped: 1696,
-        cornerDeadlocks: 5,
-        wallDeadlocks: 4,
-        goal: "Yes",
-        runtime: "0.023234 s",
-      },
-      {
-        map: "Map 3",
-        maxDepth: 20,
-        visited: 726,
-        generated: 1608,
-        skipped: 877,
-        cornerDeadlocks: 6,
-        wallDeadlocks: 5,
-        goal: "Yes",
-        runtime: "0.004731 s",
+          "Handles problematic Sokoban states such as corner and wall deadlocks to avoid unproductive search paths.",
       },
     ],
 
     limitations: [
-      "The final implementation was evaluated with one box and one goal per test environment.",
-      "The search used depth limits that were selected according to the complexity of each evaluation map.",
-      "The implemented deadlock rules cover corner and wall deadlocks but do not represent complete deadlock detection for all possible Sokoban situations.",
-      "The project demonstrates the effect of incremental pruning techniques rather than providing a complete general-purpose Sokoban solver.",
+      "The project is an academic prototype rather than a production game solver.",
+      "Search performance depends strongly on the size and complexity of the Sokoban level.",
+      "Depth-limited search introduces practical limits for larger search spaces.",
+    ],
+  },
+
+  {
+    id: "ai-knowledge-assistant",
+
+    title: "AI Knowledge Assistant",
+
+    shortDescription:
+      "A RAG-based AI assistant that lets users upload documents and ask grounded questions about their content.",
+
+    description:
+      "A full-stack AI knowledge assistant combining document ingestion, semantic retrieval, vector search, Claude, conversation history, source attribution, and streaming responses.",
+
+    type: "AI / Generative AI Project",
+
+    technologies: [
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "RAG",
+      "Embeddings",
+      "FAISS",
+      "Claude",
+    ],
+
+    featured: true,
+
+    overview: [
+      "Users can upload PDF, TXT, and Markdown documents.",
+      "Documents are extracted and divided into smaller chunks for retrieval.",
+      "Text chunks are converted into vector embeddings using a sentence-transformer model.",
+      "FAISS is used for semantic similarity search.",
+      "Retrieved document context is passed to Claude to generate grounded answers.",
+      "The assistant supports conversation history and source attribution.",
+      "Responses are streamed from the backend to the frontend.",
+    ],
+
+    highlights: [
+      "Retrieval-Augmented Generation (RAG)",
+      "PDF / TXT / Markdown ingestion",
+      "Semantic vector search",
+      "Sentence-transformer embeddings",
+      "FAISS vector index",
+      "Claude integration",
+      "Conversation history",
+      "Source attribution",
+      "Streaming AI responses",
+      "FastAPI backend",
+      "Next.js frontend",
+    ],
+
+    algorithms: [
+      {
+        name: "Document Retrieval",
+        description:
+          "User questions are embedded and compared against indexed document chunks to retrieve the most relevant context.",
+      },
+      {
+        name: "RAG Pipeline",
+        description:
+          "Relevant document chunks are provided to the language model as context so answers remain grounded in the uploaded material.",
+      },
+      {
+        name: "Semantic Search",
+        description:
+          "Vector similarity is used to identify document passages that are semantically related to the user's question.",
+      },
+    ],
+
+    limitations: [
+      "The current vector index is stored in memory and is recreated when the backend restarts.",
+      "Conversation history is currently maintained on the frontend.",
+      "The current version is intended as a portfolio and learning project rather than a production deployment.",
     ],
   },
 ];
