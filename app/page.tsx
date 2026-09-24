@@ -8,13 +8,13 @@ import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Certifications from "@/components/Certifications";
-
 export default function Home() {
-  return (
-    <>
+    return (<>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
+
+        <Projects />
 
         <About />
 
@@ -22,14 +22,12 @@ export default function Home() {
 
         <Certifications />
 
-        <Projects />
-
         <Experience />
 
         <Education />
 
         <Contact />
       </main>
-    </>
-  );
+      <Footer />
+    </>);
 }
