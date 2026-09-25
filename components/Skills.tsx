@@ -1,3 +1,5 @@
+import { getTranslator } from "@/lib/translations";
+import { type LocaleProps } from "@/lib/i18n";
 const skillGroups = [
   {
     title: "AI & Generative AI",
@@ -56,7 +58,8 @@ const skillGroups = [
   },
 ];
 
-export default function Skills() {
+export default function Skills({ locale = "en" }: LocaleProps) {
+  const t = getTranslator(locale);
   return (
     <section
       id="skills"
@@ -65,33 +68,33 @@ export default function Skills() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-16">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-blue-600 dark:text-blue-400">
-            02 — Skills
+            {t("02 — Skills")}
           </p>
 
           <h2 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
-            Technologies I work with.
+            {t("Technologies I work with.")}
           </h2>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
           {skillGroups.map((group) => (
             <div
-              key={group.title}
+              key={t(group.title)}
               className="rounded-3xl border border-black/10 bg-[#fafafa] p-8 transition duration-300 hover:-translate-y-1 hover:border-black/20 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20"
             >
-              <h3 className="text-xl font-semibold">{group.title}</h3>
+              <h3 className="text-xl font-semibold">{t(group.title)}</h3>
 
               <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-400">
-                {group.description}
+                {t(group.description)}
               </p>
 
               <div className="mt-6 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <span
-                    key={skill}
+                    key={t(skill)}
                     className="rounded-full border border-black/10 bg-white px-3 py-1.5 text-sm text-gray-700 dark:border-white/10 dark:bg-white/5 dark:text-gray-300"
                   >
-                    {skill}
+                    {t(skill)}
                   </span>
                 ))}
               </div>
