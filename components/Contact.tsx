@@ -1,7 +1,10 @@
+import { getTranslator } from "@/lib/translations";
+import { type LocaleProps } from "@/lib/i18n";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
-export default function Contact() {
+export default function Contact({ locale = "en" }: LocaleProps) {
+  const t = getTranslator(locale);
   return (
     <section
       id="contact"
@@ -10,16 +13,17 @@ export default function Contact() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-blue-600 dark:text-blue-400">
-            07 — Contact
+            {t("07 — Contact")}
           </p>
 
           <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Let&apos;s build something useful.
+            {t("Let's build something useful.")}
           </h2>
 
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
-            I&apos;m interested in software development, artificial
-            intelligence, and building practical technology.
+            {t(
+              "I'm interested in software development, artificial intelligence, and building practical technology.",
+            )}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -28,7 +32,7 @@ export default function Contact() {
               className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-500"
             >
               <Mail size={18} />
-              Get in touch
+              {t("Get in touch")}
               <ArrowUpRight
                 size={17}
                 className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -40,7 +44,7 @@ export default function Contact() {
               className="inline-flex items-center gap-2 rounded-full border border-black/10 px-6 py-3 font-medium transition hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/10"
             >
               <Phone size={18} />
-              Call me
+              {t("Call me")}
             </a>
           </div>
 

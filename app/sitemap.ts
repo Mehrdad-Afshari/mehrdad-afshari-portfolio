@@ -1,13 +1,20 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
+import { locales, localePath } from "@/lib/i18n";
+import { siteUrl } from "@/lib/seo";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://mehrdad-afshari.de";
-    return [
-        { url: baseUrl, changeFrequency: "monthly", priority: 1 },
-        ...projects.map((project) => ({
-            url: `${baseUrl}/projects/${project.id}`,
-            changeFrequency: "monthly" as const,
-            priority: project.featured ? 0.9 : 0.8,
-        })),
-    ];
+  return ["/", ...projects.map((project) => `/projects/${project.id}`)].flatMap(
+    (path) =>
+      locales.map((locale) => ({
+        url: siteUrl + localePath(locale, path),
+        alternates: {
+          languages: {
+            en: siteUrl + localePath("en", path),
+            de: siteUrl + localePath("de", path),
+            "x-default": siteUrl + localePath("en", path),
+          },
+        },
+      })),
+  );
 }
