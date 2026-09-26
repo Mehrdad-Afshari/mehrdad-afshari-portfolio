@@ -56,15 +56,39 @@ body {
 }
 
 /*
-  Keep secondary text visually subtle while meeting WCAG contrast targets.
-  Several small labels use text-gray-500 across cards and footer content.
+  Keep small and secondary text visually subtle while meeting WCAG
+  contrast targets on the light card backgrounds used throughout the site.
 */
 .text-gray-500 {
   color: #4b5563;
 }
 
+.text-gray-400 {
+  color: #4b5563;
+}
+
+.text-blue-600 {
+  color: #1d4ed8;
+}
+
+.text-green-600 {
+  color: #15803d;
+}
+
 .dark .text-gray-500 {
   color: #9ca3af;
+}
+
+.dark .text-gray-400 {
+  color: #9ca3af;
+}
+
+.dark .text-blue-600 {
+  color: #60a5fa;
+}
+
+.dark .text-green-600 {
+  color: #4ade80;
 }
 
 /* Better keyboard accessibility */
