@@ -55,6 +55,18 @@ body {
   color: #ffffff;
 }
 
+/*
+  Keep secondary text visually subtle while meeting WCAG contrast targets.
+  Several small labels use text-gray-500 across cards and footer content.
+*/
+.text-gray-500 {
+  color: #4b5563;
+}
+
+.dark .text-gray-500 {
+  color: #9ca3af;
+}
+
 /* Better keyboard accessibility */
 a:focus-visible,
 button:focus-visible {
