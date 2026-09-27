@@ -4,159 +4,40 @@ import type { Locale } from "@/lib/i18n";
 const germanProjects: Project[] = [
   {
     ...projects[0],
-    type: "Lokales RAG · Full-Stack-KI-Anwendung",
-    shortDescription:
-      "Ein datenschutzorientierter Dokumentenassistent mit lokaler KI, gestreamten Antworten und nachvollziehbaren Quellen.",
-    description:
-      "Eine Full-Stack-Anwendung mit Retrieval-Augmented Generation, die PDF-, TXT- und Markdown-Dokumente in eine dauerhaft gespeicherte, durchsuchbare Wissensbasis verwandelt. Entwickelt mit Next.js, FastAPI, Ollama und FAISS.",
-    problem:
-      "Sprachmodelle kennen private oder neu hochgeladene Dokumente nicht automatisch. Ich wollte einen Dokumentenassistenten entwickeln, der relevanten Kontext findet, seine Quellen zeigt und indexiertes Wissen ohne kostenpflichtige KI-API dauerhaft speichert.",
-    solution:
-      "Ich habe die RAG-Pipeline direkt implementiert: Dokumente einlesen, überlappende Textabschnitte erstellen, lokale Embeddings erzeugen, relevanten Kontext mit FAISS finden und Antworten eines lokalen Ollama-Modells mit Quellenmetadaten streamen.",
-    outcome:
-      "Version 1.0 unterstützt die Dokumentenverarbeitung, persistente semantische Suche, gestreamte Antworten, Quellenangaben und Dokumentenverwaltung. Backend-Unit-Tests sowie Lint- und Build-Prüfungen für das Frontend laufen in GitHub Actions. Es handelt sich um eine lokale Portfolio-Anwendung; Suchgenauigkeit und Latenz wurden hier nicht durch Benchmarks bewertet.",
-    overview: [
-      "Das Projekt entstand, um RAG über die Abstraktionen eines Frameworks hinaus zu verstehen. TypeScript-Frontend und Python-Backend bilden getrennte Anwendungsschichten.",
-      "Die Dokumentenverarbeitung erhält bei PDFs die Seiteninformationen und zerlegt Texte mit einem eigenen Chunker in überlappende Abschnitte. Lokale Embeddings von nomic-embed-text werden normalisiert und in FAISS indexiert.",
-      "Gefundene Textabschnitte dienen llama3.2 als Kontext. Der SSE-Endpunkt sendet Quellenmetadaten vor den Antwort-Tokens. Dadurch sind Dateinamen, Seiten und Relevanzwerte während der Antwort sichtbar.",
-      "Index und Metadaten bleiben nach einem Backend-Neustart erhalten. Über die Oberfläche lassen sich Dokumente der Wissensbasis auflisten und löschen.",
-    ],
-    highlights: [
-      "Direkt implementierte RAG-Pipeline ohne LangChain",
-      "Lokale Embeddings und Antwortgenerierung mit Ollama",
-      "Persistenter FAISS-Index mit Metadaten",
-      "SSE-Streaming mit sichtbaren Quellen",
-      "Dokumente auflisten und löschen",
-      "Backend-Unit-Tests und CI mit GitHub Actions",
-    ],
-    pipeline: [
-      {
-        name: "Einlesen",
-        description:
-          "PDF / TXT / Markdown → Textextraktion und überlappende Abschnitte",
-      },
-      {
-        name: "Indexieren",
-        description:
-          "nomic-embed-text → normalisierte Vektoren → persistenter FAISS-Index",
-      },
-      {
-        name: "Suchen",
-        description:
-          "Frage als Embedding → Kosinusähnlichkeit → relevanter Kontext",
-      },
-      {
-        name: "Antworten",
-        description: "llama3.2 → SSE-Tokens + Dateinamen, Seiten und Relevanz",
-      },
-    ],
-    algorithms: [
-      {
-        name: "Direkte SDKs, transparente RAG-Pipeline",
-        description:
-          "Chunking, Suche, Kontextaufbau, Persistenz und Streaming sind direkt statt mit LangChain implementiert. Dadurch lassen sich die einzelnen Schritte besser verstehen und Fehler gezielter untersuchen.",
-      },
-      {
-        name: "Ollama für lokale KI",
-        description:
-          "nomic-embed-text erzeugt Embeddings mit 768 Dimensionen; llama3.2 generiert Antworten. Ollama kommt ohne kostenpflichtige API aus und löste die während der Entwicklung aufgetretenen Windows-/PyTorch-Kompatibilitätsprobleme.",
-      },
-      {
-        name: "Normalisierte Suche mit FAISS",
-        description:
-          "Durch normalisierte Vektoren entspricht die Suche mit IndexFlatIP der Kosinusähnlichkeit. Damit bleibt die lokale Wissensbasis ohne externe Vektordatenbank überschaubar.",
-      },
-      {
-        name: "Persistenz im Dateisystem",
-        description:
-          "index.faiss speichert Vektoren, chunks.json die Metadaten. Beide Dateien werden beim Start validiert. Beim Löschen eines Dokuments wird der flache Index aus den verbleibenden Vektoren neu aufgebaut.",
-      },
-    ],
-    challenges: [
-      {
-        name: "Dateisperren unter Windows",
-        description:
-          "Benannte temporäre Dateien werden geschlossen, bevor PyPDF sie erneut öffnet, und nach der Verarbeitung explizit entfernt.",
-      },
-      {
-        name: "Wissensverlust nach einem Neustart",
-        description:
-          "Der anfangs nur im Arbeitsspeicher gehaltene Index wurde durch persistente Vektoren und Metadaten ersetzt, die beim Start wiederhergestellt werden.",
-      },
-      {
-        name: "Verständliche Quelldateinamen",
-        description:
-          "Die ursprünglichen Dateinamen bleiben während der Verarbeitung über temporäre Dateien erhalten, damit Quellenangaben nachvollziehbar sind.",
-      },
-      {
-        name: "CI ohne laufendes Sprachmodell",
-        description:
-          "Deterministische Backend-Logik wird ohne Ollama in GitHub Actions getestet. Ergänzend laufen Lint- und Build-Prüfungen für das Frontend.",
-      },
-    ],
-    limitations: [
-      "Lokales Ollama für Embeddings und Antwortgenerierung erforderlich; keine gehostete Live-Demo.",
-      "Keine OCR für gescannte oder rein bildbasierte PDFs.",
-      "Keine Authentifizierung, Benutzerkonten oder Mandantentrennung.",
-      "Lokales Dateisystem und flacher FAISS-Index eignen sich für kleine lokale Dokumentensammlungen. Beim Löschen wird der verbleibende Index neu aufgebaut.",
-    ],
-    documentation: projects[0].documentation?.map((item, index) => ({
-      ...item,
-      label: [
-        "README & Einrichtung (EN)",
-        "Portfolio-Text (EN)",
-        "Ausführlicher Projektbericht (EN)",
-        "Architektur (EN)",
-        "Roadmap (EN)",
-      ][index],
-    })),
+    type: "Evidenzbasierte KI · Full-Stack-Anwendung",
+    shortDescription: "Ein lokaler CV-Stellen-Matcher mit transparentem Scoring, Evidenzstatus und abgesicherter KI-Textgenerierung.",
+    description: "Eine Full-Stack-KI-Anwendung, die einen PDF-Lebenslauf mit einer Stellenbeschreibung vergleicht, Anforderungen extrahiert, Nachweise im CV prüft, einen deterministischen Match-Score berechnet und mit einem lokalen Sprachmodell abgesicherte Bewerbungsunterlagen erzeugt.",
+    problem: "Reine LLM-basierte CV-Matcher können schwankende Scores und unbelegte Aussagen erzeugen. Ziel war deshalb ein Bewerbungsassistent, dessen Bewertung nachvollziehbar ist und dessen Textgenerierung Berufserfahrung nicht stillschweigend erfindet.",
+    solution: "Analyse und Sprachgenerierung wurden getrennt. Das Backend klassifiziert Anforderungen als MATCHED, PARTIAL oder MISSING und berechnet den Score aus diesen kanonischen Zuständen. Ollama wird nur für die natürliche Textgenerierung eingesetzt und erhält evidenzbasierte Leitplanken.",
+    outcome: "Version 1.6.1 bietet eine transparente 100-Punkte-Bewertung, Nachweise auf Anforderungsebene, ATS-Schlüsselwörter, Deutsch-/Englisch-Unterstützung und lokal generierte Anschreiben mit Guardrails. Im getesteten SVO-Beispiel lief die deterministische Analyse in weniger als einer Sekunde; die lokale Generierungszeit hängt von Hardware und Modell ab.",
+    overview: ["PDF-Lebenslauf und vollständige Stellenbeschreibung werden in eine strukturierte Anforderungs-Evidenz-Tabelle überführt.","Anforderungen erhalten vor der Bewertung einen kanonischen Status: MATCHED, PARTIAL oder MISSING. Dadurch bleiben angezeigte Evidenz und Score konsistent.","Eine deterministische Python-Schicht berechnet 100 Punkte in den Bereichen technische Fähigkeiten, Erfahrung/Projekte, Ausbildung/Domäne und weitere Anforderungen.","Das lokale LLM ist nicht Teil der Score-Berechnung und erstellt das Anschreiben erst auf Basis der bereits strukturierten Evidenz."],
+    highlights: ["Deterministisches, erklärbares 100-Punkte-Scoring","MATCHED / PARTIAL / MISSING als Evidenzmodell","Guardrails gegen unbelegte Erfahrungsbehauptungen","Lokale Ollama-Inferenz ohne kostenpflichtige KI-API","Deutsch und Englisch","Responsives Analyse-Dashboard"],
+    pipeline: [{name:"Extrahieren",description:"PDF-Lebenslauf + Stellenbeschreibung → normalisierte Kandidaten- und Rollentexte"},{name:"Prüfen",description:"Anforderungen → MATCHED / PARTIAL / MISSING"},{name:"Bewerten",description:"Deterministische Python-Gewichtung → erklärbarer 100-Punkte-Score"},{name:"Generieren",description:"Strukturierte Evidenz → abgesichertes lokales Anschreiben und Bewerbungsvorbereitung"}],
+    algorithms: [{name:"Deterministisches Scoring",description:"Das LLM bestimmt den Match-Score nicht. Gewichtete Logik verarbeitet die kanonischen Evidenzstatus und macht die Bewertung reproduzierbar."},{name:"Evidenzbasierte Generierung",description:"Fehlende Anforderungen bleiben Lücken und werden nicht zu angeblicher Erfahrung. Die Ausgabe wird auf unbelegte Behauptungen und Wiederholungen geprüft."},{name:"Hybride KI-Architektur",description:"Schnelle deterministische Logik übernimmt Aufgaben, die Konsistenz benötigen; das lokale LLM wird gezielt für natürliche Sprache eingesetzt."}],
+    challenges: [{name:"Erfundene Erfahrung",description:"Scoring und Generierung wurden getrennt und durch evidenzbasierte Prompts sowie Validierung ergänzt."},{name:"Latenz lokaler Modelle",description:"CV-Vorschläge und Interviewfragen wurden aus dem LLM-Pfad entfernt. In Entwicklungstests sank die Generierung von etwa 101 auf etwa 49 Sekunden; ein späterer Lauf lag bei rund 26 Sekunden."},{name:"Inkonsistente Anforderungen",description:"Score, bestätigte Treffer und fehlende Anforderungen werden aus derselben kanonischen Evidenzdarstellung abgeleitet."}],
+    limitations: ["Anforderungsextraktion verwendet derzeit kuratierte Matching-Logik statt semantischer Embeddings.","Qualität und Geschwindigkeit der Textgenerierung hängen vom lokalen Ollama-Modell und der Hardware ab.","Keine OCR für rein gescannte PDFs.","Aktueller Sprachfokus: Deutsch und Englisch."],
+    documentation: projects[0].documentation,
   },
   {
     ...projects[1],
+    type: "Lokales RAG · Full-Stack-KI-Anwendung",
+    shortDescription: "Ein datenschutzorientierter Dokumentenassistent mit lokaler KI, gestreamten Antworten und nachvollziehbaren Quellen.",
+    description: "Eine Full-Stack-Anwendung mit Retrieval-Augmented Generation, die PDF-, TXT- und Markdown-Dokumente in eine dauerhaft gespeicherte, durchsuchbare Wissensbasis verwandelt.",
+    problem: "Sprachmodelle kennen private oder neu hochgeladene Dokumente nicht automatisch. Ziel war ein Assistent, der relevanten Kontext findet, Quellen zeigt und ohne kostenpflichtige KI-API arbeitet.",
+    solution: "Die RAG-Pipeline wurde direkt implementiert: Dokumente einlesen, überlappende Abschnitte erstellen, lokale Embeddings erzeugen, Kontext mit FAISS finden und Antworten über Ollama streamen.",
+    outcome: "Version 1.0 unterstützt Dokumentenverarbeitung, persistente semantische Suche, gestreamte Antworten, Quellenangaben und Dokumentenverwaltung.",
+    overview: ["TypeScript-Frontend und Python-Backend bilden getrennte Anwendungsschichten.","PDFs werden seitenbezogen extrahiert und mit einem eigenen Chunker verarbeitet; Embeddings werden normalisiert und in FAISS indexiert.","Gefundene Abschnitte dienen llama3.2 als Kontext; Quellenmetadaten werden zusammen mit der Antwort sichtbar gemacht.","Index und Metadaten bleiben nach Backend-Neustarts erhalten."],
+    highlights: ["RAG-Pipeline ohne LangChain","Lokale Embeddings und Generierung mit Ollama","Persistenter FAISS-Index","SSE-Streaming mit Quellen","Dokumentenverwaltung","GitHub Actions CI"],
+    documentation: projects[1].documentation,
+  },
+  {
+    ...projects[2],
     type: "Universitätsprojekt",
-    shortDescription:
-      "Ein akademischer Sokoban-Solver auf Basis von Suchalgorithmen, entwickelt mit Python und PDDL.",
-    description:
-      "Ein Universitätsprojekt zur Lösung von Sokoban-Leveln mit klassischen Suchalgorithmen, einer PDDL-basierten Problembeschreibung und der Erkennung von Sackgassen.",
-    overview: [
-      "Entwickelt im Rahmen des Kurses Algorithms in Game Environments an der Universität Rostock.",
-      "Das Projekt untersucht die automatische Lösung von Sokoban-Leveln mit klassischen Suchverfahren.",
-      "Die Aufgaben wurden in PDDL beschrieben und mit einem Python-basierten Lösungsablauf verarbeitet.",
-      "Verschiedene Suchstrategien wurden unter Berücksichtigung von Sokoban-Zuständen und Sackgassen untersucht.",
-    ],
-    highlights: [
-      "Breitensuche (BFS)",
-      "Tiefensuche (DFS)",
-      "Problembeschreibung mit PDDL",
-      "Erkennung von Sackgassen",
-      "Zustandsraumsuche",
-      "Implementierung in Python",
-    ],
-    algorithms: [
-      {
-        name: "Breitensuche",
-        description:
-          "Durchsucht den Zustandsraum Ebene für Ebene und kann bei gleichen Schrittkosten eine kürzeste Lösung finden.",
-      },
-      {
-        name: "Tiefensuche",
-        description:
-          "Verfolgt Lösungspfade in die Tiefe und begrenzt dabei die Suchtiefe.",
-      },
-      {
-        name: "Erkennung von Sackgassen",
-        description:
-          "Erkennt problematische Zustände wie Sackgassen an Ecken und Wänden, um aussichtslose Suchpfade zu vermeiden.",
-      },
-    ],
-    limitations: [
-      "Akademischer Prototyp, kein produktionsreifer Spielsolver.",
-      "Die Suchleistung hängt stark von Größe und Komplexität des jeweiligen Sokoban-Levels ab.",
-      "Die begrenzte Suchtiefe setzt der Bearbeitung größerer Zustandsräume praktische Grenzen.",
-    ],
+    shortDescription: "Ein akademischer Sokoban-Solver auf Basis von Suchalgorithmen, entwickelt mit Python und PDDL.",
+    description: "Ein Universitätsprojekt zur Lösung von Sokoban-Leveln mit klassischen Suchalgorithmen, PDDL und Sackgassenerkennung.",
+    overview: ["Entwickelt im Kurs Algorithms in Game Environments an der Universität Rostock.","Automatische Lösung von Sokoban-Leveln mit klassischen Suchverfahren.","PDDL-basierte Problembeschreibung und Python-Workflow.","Untersuchung verschiedener Suchstrategien und Sackgassen."],
+    highlights: ["Breitensuche (BFS)","Tiefensuche (DFS)","PDDL","Sackgassenerkennung","Zustandsraumsuche","Python"],
   },
 ];
 
-export function getProjects(locale: Locale): Project[] {
-  return locale === "de" ? germanProjects : projects;
-}
+export function getProjects(locale: Locale): Project[] { return locale === "de" ? germanProjects : projects; }
