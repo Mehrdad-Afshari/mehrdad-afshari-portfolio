@@ -17,7 +17,7 @@ export default function RootDocument({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(()=>{try{const t=localStorage.getItem("theme");document.documentElement.classList.toggle("dark",t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches)}catch{}})();`,
+            __html: `(()=>{try{const t=localStorage.getItem("theme");document.documentElement.classList.toggle("dark",t?t==="dark":true)}catch{document.documentElement.classList.add("dark")}})();`,
           }}
         />
       </head>
