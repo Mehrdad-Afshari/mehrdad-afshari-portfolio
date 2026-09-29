@@ -7,6 +7,7 @@ import Image from "next/image";
 export default function Hero({ locale = "en" }: LocaleProps) {
   const t = getTranslator(locale);
   const cvHref = locale === "de" ? "/cv/mehrdad-afshari-lebenslauf-de.pdf" : "/cv/mehrdad-afshari-cv.pdf";
+  const cvLabel = locale === "de" ? "Lebenslauf herunterladen" : "Download CV";
   const proofPoints = [
     ["13+ years", "Software development"],
     ["MSc", "Computer Science · Rostock"],
@@ -34,7 +35,7 @@ export default function Hero({ locale = "en" }: LocaleProps) {
 
               <div className="mt-10 flex flex-wrap gap-4">
                 <a href="#projects" className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-500">{t("Explore my work")}<ArrowRight size={18} className="transition-transform group-hover:translate-x-1" /></a>
-                <a href={cvHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-black/10 px-6 py-3 font-medium text-[#111111] transition hover:bg-black/5 dark:border-white/20 dark:text-white dark:hover:bg-white/10"><Download size={18} />{t("Download CV")}</a>
+                <a href={cvHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-black/10 px-6 py-3 font-medium text-[#111111] transition hover:bg-black/5 dark:border-white/20 dark:text-white dark:hover:bg-white/10"><Download size={18} />{cvLabel}</a>
               </div>
 
               <div className="mt-10 flex items-center gap-6 text-gray-600 dark:text-gray-400">
