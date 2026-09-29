@@ -3,23 +3,23 @@ import { type LocaleProps } from "@/lib/i18n";
 const skillGroups = [
   {
     title: "Applied AI",
-    description: "AI technologies used in hands-on projects, with a focus on transparent local RAG applications and LLM-powered software.",
-    skills: ["RAG", "LLMs", "Embeddings", "FAISS", "Ollama", "Prompt Engineering", "AI Application Development", "Responsible AI"],
+    description: "AI technologies demonstrated in hands-on projects, focused on local LLM applications, retrieval, grounded outputs, and practical AI workflows.",
+    skills: ["RAG", "LLMs", "Embeddings", "Vector Search", "FAISS", "Ollama", "faster-whisper", "Prompt Engineering", "Grounded Q&A", "Responsible AI"],
   },
   {
     title: "Software Engineering",
-    description: "Professional experience in application development and enterprise software, complemented by modern Python and TypeScript development.",
-    skills: ["C#", "VB.NET", "Python", "TypeScript", "JavaScript", ".NET", "FastAPI", "REST APIs", "Software Architecture"],
+    description: "Professional application and enterprise-software experience, extended with modern Python APIs and TypeScript full-stack development.",
+    skills: ["C#", "VB.NET", ".NET", "Python", "FastAPI", "Pydantic", "REST APIs", "TypeScript", "JavaScript", "Next.js", "Software Architecture"],
   },
   {
     title: "Databases",
     description: "Database development, design, optimization and data analysis from professional enterprise software work.",
-    skills: ["SQL Server", "Database Design", "Query Optimization", "SQL", "Data Analysis"],
+    skills: ["SQL Server", "SQLite", "Database Design", "Query Optimization", "SQL", "Data Analysis"],
   },
   {
-    title: "Web & Tools",
-    description: "Web technologies and engineering tools used across professional work and current portfolio projects.",
-    skills: ["Next.js", "Tailwind CSS", "WordPress", "HTML", "CSS", "Git", "GitHub", "GitHub Actions", "Visual Studio", "VS Code"],
+    title: "Engineering Workflow",
+    description: "Tools and practices used across professional work and current portfolio projects to build, verify, document, and ship software.",
+    skills: ["Git", "GitHub", "GitHub Actions", "CI", "API Documentation", "Vercel", "Tailwind CSS", "WordPress", "Visual Studio", "VS Code"],
   },
 ];
 
