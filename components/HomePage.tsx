@@ -10,6 +10,7 @@ import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Certifications from "@/components/Certifications";
+
 export default function HomePage({ locale = "en" }: LocaleProps) {
   return (
     <>
@@ -17,19 +18,12 @@ export default function HomePage({ locale = "en" }: LocaleProps) {
       <Navbar locale={locale} />
       <main id="main-content">
         <Hero locale={locale} />
-
         <Projects locale={locale} />
-
-        <About locale={locale} />
-
-        <Skills locale={locale} />
-
-        <Certifications locale={locale} />
-
         <Experience locale={locale} />
-
+        <Skills locale={locale} />
+        <About locale={locale} />
         <Education locale={locale} />
-
+        <Certifications locale={locale} />
         <Contact locale={locale} />
       </main>
       <Footer locale={locale} />
