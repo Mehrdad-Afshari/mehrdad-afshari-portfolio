@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { getProjects } from "@/data/localized-projects";
+
 export default function Projects({ locale = "en" }: LocaleProps) {
   const t = getTranslator(locale);
   const projects = getProjects(locale);
@@ -18,8 +19,23 @@ export default function Projects({ locale = "en" }: LocaleProps) {
         <div className="space-y-8">
           {projects.map((project, index) => {
             const hasVisualPanel = Boolean(project.pipeline) || project.id === "sokoban-solver";
-            const panelTitle = project.id === "sokoban-solver" ? (locale === "de" ? "Im Suchraum" : "Inside the search space") : t("Inside the RAG pipeline");
+            const panelTitle = project.id === "sokoban-solver"
+              ? (locale === "de" ? "Im Suchraum" : "Inside the search space")
+              : project.id === "ai-meeting-assistant"
+                ? (locale === "de" ? "Von Sprache zu Wissen" : "From speech to knowledge")
+                : project.id === "ai-job-application-assistant"
+                  ? (locale === "de" ? "Von Evidenz zur Bewerbung" : "From evidence to application")
+                  : t("Inside the RAG pipeline");
             const panelSteps = project.pipeline ?? project.algorithms?.slice(0, 3) ?? [];
+            const isSokoban = project.id === "sokoban-solver";
+            const isMeeting = project.id === "ai-meeting-assistant";
+            const panelBg = isSokoban ? "bg-[#241b35]" : isMeeting ? "bg-[#102421]" : "bg-[#101c32]";
+            const accent = isSokoban ? "text-violet-300" : isMeeting ? "text-emerald-300" : "text-blue-300";
+            const panelFooter = isSokoban
+              ? (locale === "de" ? "Klassische Zustandsraumsuche mit Deadlock-Erkennung, entwickelt als Universitätsprojekt an der Universität Rostock." : "Classical state-space search with deadlock detection, developed as a university project at the University of Rostock.")
+              : isMeeting
+                ? (locale === "de" ? "Lokale Transkription mit faster-whisper, lokale Analyse mit Ollama und persistenter Meeting-Verlauf mit SQLite." : "Local transcription with faster-whisper, local analysis with Ollama, and persistent meeting history with SQLite.")
+                : t("Runs locally with Ollama. No paid AI API required. Setup instructions are available on GitHub.");
             return (
               <article key={project.id} className="overflow-hidden rounded-3xl border border-black/10 bg-[#fafafa] dark:border-white/10 dark:bg-[#0d1118]">
                 <div className={hasVisualPanel ? "grid lg:grid-cols-[1.15fr_0.85fr]" : ""}>
@@ -40,12 +56,12 @@ export default function Projects({ locale = "en" }: LocaleProps) {
                     </div>
                   </div>
                   {hasVisualPanel && (
-                    <aside aria-label={panelTitle} className={`flex flex-col justify-center p-7 text-white sm:p-10 ${project.id === "sokoban-solver" ? "bg-[#241b35]" : "bg-[#101c32]"}`}>
-                      <p className={`text-sm uppercase tracking-widest ${project.id === "sokoban-solver" ? "text-violet-300" : "text-blue-300"}`}>{panelTitle}</p>
+                    <aside aria-label={panelTitle} className={`flex flex-col justify-center p-7 text-white sm:p-10 ${panelBg}`}>
+                      <p className={`text-sm uppercase tracking-widest ${accent}`}>{panelTitle}</p>
                       <ol className="mt-8 space-y-7">
-                        {panelSteps.map((step, stepIndex) => <li key={step.name} className="grid grid-cols-[2rem_1fr] gap-4"><span className={`pt-1 font-mono text-sm ${project.id === "sokoban-solver" ? "text-violet-300" : "text-blue-300"}`}>0{stepIndex + 1}</span><div><h4 className="text-lg font-medium">{step.name}</h4><p className="mt-2 text-base leading-7 text-slate-300">{step.description}</p></div></li>)}
+                        {panelSteps.map((step, stepIndex) => <li key={step.name} className="grid grid-cols-[2rem_1fr] gap-4"><span className={`pt-1 font-mono text-sm ${accent}`}>0{stepIndex + 1}</span><div><h4 className="text-lg font-medium">{step.name}</h4><p className="mt-2 text-base leading-7 text-slate-300">{step.description}</p></div></li>)}
                       </ol>
-                      <p className="mt-9 border-t border-white/15 pt-5 text-sm leading-6 text-slate-300">{project.id === "sokoban-solver" ? (locale === "de" ? "Klassische Zustandsraumsuche mit Deadlock-Erkennung, entwickelt als Universitätsprojekt an der Universität Rostock." : "Classical state-space search with deadlock detection, developed as a university project at the University of Rostock.") : t("Runs locally with Ollama. No paid AI API required. Setup instructions are available on GitHub.")}</p>
+                      <p className="mt-9 border-t border-white/15 pt-5 text-sm leading-6 text-slate-300">{panelFooter}</p>
                     </aside>
                   )}
                 </div>
