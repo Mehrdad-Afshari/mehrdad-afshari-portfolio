@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { localePath, type Locale } from "./i18n";
+
 export const siteUrl = "https://mehrdad-afshari.de";
 
 export function pageMetadata(
@@ -11,6 +12,7 @@ export function pageMetadata(
 ): Metadata {
   const canonical = localePath(locale, path);
   const image = `/og?lang=${locale}${projectId ? `&project=${projectId}` : ""}`;
+
   return {
     metadataBase: new URL(siteUrl),
     title: { absolute: title },
@@ -47,19 +49,32 @@ export function homeMetadata(locale: Locale) {
     locale,
     "/",
     locale === "de"
-      ? "Mehrdad Afshari | KI- & Softwareentwickler in Rostock"
-      : "Mehrdad Afshari | AI & Software Developer in Rostock",
+      ? "Mehrdad Afshari | KI- & Softwareentwickler in Deutschland"
+      : "Mehrdad Afshari | AI & Software Developer in Germany",
     locale === "de"
-      ? "Portfolio von Mehrdad Afshari: KI- und Softwareentwicklung, lokale RAG-Anwendungen mit Python und Next.js sowie .NET und SQL Server. Masterstudent an der Universität Rostock."
-      : "Mehrdad Afshari’s portfolio: AI and software development, local RAG applications with Python and Next.js, .NET and SQL Server. MSc student at the University of Rostock.",
+      ? "Portfolio von Mehrdad Afshari, KI- und Softwareentwickler und Informatik-Masterstudent in Rostock. Projekte zu Generative AI, RAG, Python, Next.js, .NET und SQL Server."
+      : "Portfolio of Mehrdad Afshari, an AI and software developer and MSc Computer Science student in Rostock, Germany. Projects in Generative AI, RAG, Python, Next.js, .NET and SQL Server.",
   );
 }
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: "Mehrdad Afshari", template: "%s | Mehrdad Afshari" },
+  applicationName: "Mehrdad Afshari Portfolio",
   authors: [{ name: "Mehrdad Afshari", url: siteUrl }],
   creator: "Mehrdad Afshari",
-  robots: { index: true, follow: true },
+  publisher: "Mehrdad Afshari",
+  category: "technology",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: { icon: "/icon.svg", shortcut: "/icon.svg" },
 };

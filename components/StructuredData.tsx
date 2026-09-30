@@ -12,6 +12,7 @@ function JsonLd({ data }: { data: object }) {
     />
   );
 }
+
 export function HomeStructuredData({ locale }: { locale: Locale }) {
   const url = siteUrl + localePath(locale);
   const person = {
@@ -20,10 +21,11 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
     name: "Mehrdad Afshari",
     url: siteUrl,
     image: `${siteUrl}/images/mehrdad-afshari.png`,
+    jobTitle: "AI & Software Developer",
     description:
       locale === "de"
-        ? "Softwareentwickler mit Schwerpunkt KI und Masterstudent der Informatik an der Universität Rostock."
-        : "Software developer focused on AI and an MSc Computer Science student at the University of Rostock.",
+        ? "KI- und Softwareentwickler sowie Masterstudent der Informatik an der Universität Rostock mit Schwerpunkt auf Generative AI, RAG und Softwareentwicklung."
+        : "AI and software developer and MSc Computer Science student at the University of Rostock, focused on Generative AI, RAG and software development.",
     sameAs: [
       "https://github.com/Mehrdad-Afshari",
       "https://linkedin.com/in/mehrdadafshari",
@@ -41,13 +43,20 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
       url: "https://www.uni-rostock.de/",
     },
     knowsAbout: [
-      "Software Development",
+      "Artificial Intelligence",
+      "Generative AI",
+      "Large Language Models",
       "Retrieval-Augmented Generation",
+      "AI Agents",
+      "Software Development",
       "Python",
+      "C#",
       ".NET",
       "SQL Server",
+      "Next.js",
     ],
   };
+
   return (
     <JsonLd
       data={{
@@ -66,6 +75,10 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
             "@type": "ProfilePage",
             "@id": `${url}#profile`,
             url,
+            name:
+              locale === "de"
+                ? "Mehrdad Afshari – KI- & Softwareentwickler"
+                : "Mehrdad Afshari – AI & Software Developer",
             inLanguage: locale,
             mainEntity: { "@id": `${siteUrl}/#person` },
             isPartOf: { "@id": `${siteUrl}/#website` },
@@ -75,6 +88,7 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
     />
   );
 }
+
 export function ProjectStructuredData({
   project,
   locale,
@@ -83,18 +97,34 @@ export function ProjectStructuredData({
   locale: Locale;
 }) {
   const url = siteUrl + localePath(locale, `/projects/${project.id}`);
+  const isSoftwareProject = project.technologies.some((technology) =>
+    ["Python", "Next.js", "TypeScript", "C#", "FastAPI"].includes(technology),
+  );
+
   return (
     <JsonLd
       data={{
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "CreativeWork",
+            "@type": isSoftwareProject ? "SoftwareSourceCode" : "CreativeWork",
             "@id": `${url}#project`,
             name: project.title,
             description: project.description,
             url,
             inLanguage: locale,
+            ...(isSoftwareProject
+              ? {
+                  programmingLanguage: project.technologies.filter((technology) =>
+                    ["Python", "TypeScript", "JavaScript", "C#"].includes(technology),
+                  ),
+                  runtimePlatform: project.technologies.filter((technology) =>
+                    ["Next.js", "FastAPI", ".NET", "Ollama"].includes(technology),
+                  ),
+                  codeRepository: project.github,
+                }
+              : {}),
+            keywords: project.technologies.join(", "),
             author: {
               "@type": "Person",
               "@id": `${siteUrl}/#person`,
