@@ -1,14 +1,14 @@
 import { getTranslator } from "@/lib/translations";
 import { type LocaleProps } from "@/lib/i18n";
 import { Award, ExternalLink } from "lucide-react";
-import { SiAnthropic, SiGooglecloud, SiMicrosoft, SiNasa } from "react-icons/si";
+import { SiAnthropic, SiGooglecloud, SiMicrosoft } from "react-icons/si";
 import { certifications } from "@/data/certifications";
 
 const issuerLogos = {
   Anthropic: SiAnthropic,
   "Google Cloud": SiGooglecloud,
   Microsoft: SiMicrosoft,
-  NASA: SiNasa,
+
 } as const;
 
 const categories = [
@@ -76,7 +76,14 @@ export default function Certifications({ locale = "en" }: LocaleProps) {
                       )}
 
                       <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-black/5 dark:bg-white/10">
-                        {IssuerLogo ? (
+                        {certification.issuer === "NASA" ? (
+                          <span
+                            aria-label="NASA logo"
+                            className="text-[13px] font-black italic tracking-[-0.08em] text-[#0b3d91] dark:text-[#6aa9ff]"
+                          >
+                            NASA
+                          </span>
+                        ) : IssuerLogo ? (
                           <IssuerLogo
                             size={22}
                             aria-label={`${certification.issuer} logo`}
