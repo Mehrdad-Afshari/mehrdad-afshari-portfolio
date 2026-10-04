@@ -1,7 +1,15 @@
 import { getTranslator } from "@/lib/translations";
 import { type LocaleProps } from "@/lib/i18n";
 import { Award, ExternalLink } from "lucide-react";
+import { SiAnthropic, SiGooglecloud, SiMicrosoft, SiNasa } from "react-icons/si";
 import { certifications } from "@/data/certifications";
+
+const issuerLogos = {
+  Anthropic: SiAnthropic,
+  "Google Cloud": SiGooglecloud,
+  Microsoft: SiMicrosoft,
+  NASA: SiNasa,
+} as const;
 
 const categories = [
   "AI & Generative AI",
@@ -48,7 +56,13 @@ export default function Certifications({ locale = "en" }: LocaleProps) {
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  {items.map((certification) => (
+                  {items.map((certification) => {
+                    const IssuerLogo =
+                      issuerLogos[
+                        certification.issuer as keyof typeof issuerLogos
+                      ];
+
+                    return (
                     <article
                       key={certification.id}
                       className="group relative rounded-3xl border border-black/10 bg-[#fafafa] p-6 transition duration-300 hover:-translate-y-1 hover:border-black/20 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20"
@@ -62,10 +76,19 @@ export default function Certifications({ locale = "en" }: LocaleProps) {
                       )}
 
                       <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-black/5 dark:bg-white/10">
-                        <Award
-                          size={21}
-                          className="text-blue-600 dark:text-blue-400"
-                        />
+                        {IssuerLogo ? (
+                          <IssuerLogo
+                            size={22}
+                            aria-label={`${certification.issuer} logo`}
+                            className="text-[#111111] dark:text-white"
+                          />
+                        ) : (
+                          <Award
+                            size={21}
+                            aria-label="Certification"
+                            className="text-blue-600 dark:text-blue-400"
+                          />
+                        )}
                       </div>
 
                       <p className="mt-6 text-xs font-medium uppercase tracking-[0.18em] text-gray-500">
@@ -102,7 +125,8 @@ export default function Certifications({ locale = "en" }: LocaleProps) {
                         </div>
                       )}
                     </article>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             );
