@@ -46,12 +46,44 @@ function IssuerLogo({ issuer }: { issuer: string }) {
   if (issuer === "NASA") {
     return (
       <div className={base} title="NASA">
-        <span
-          aria-label="NASA credential issuer"
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0b3d91] text-[9px] font-extrabold italic tracking-[-0.06em] text-white shadow-sm"
+        <svg
+          aria-label="NASA logo"
+          viewBox="0 0 64 64"
+          className="h-9 w-9"
+          role="img"
         >
-          NASA
-        </span>
+          <circle cx="32" cy="32" r="30" fill="#0B3D91" />
+          <circle cx="18" cy="17" r="1.1" fill="white" />
+          <circle cx="42" cy="15" r="0.9" fill="white" />
+          <circle cx="48" cy="29" r="1" fill="white" />
+          <circle cx="21" cy="44" r="0.8" fill="white" />
+          <path
+            d="M8 43C23 35 38 25 55 13C44 29 30 41 11 50"
+            fill="none"
+            stroke="#FC3D21"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+          />
+          <path
+            d="M14 39C26 16 39 14 52 35"
+            fill="none"
+            stroke="white"
+            strokeWidth="1"
+            opacity="0.8"
+          />
+          <text
+            x="32"
+            y="38"
+            textAnchor="middle"
+            fill="white"
+            fontSize="17"
+            fontWeight="800"
+            fontStyle="italic"
+            letterSpacing="-1.5"
+          >
+            NASA
+          </text>
+        </svg>
       </div>
     );
   }
