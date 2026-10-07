@@ -52,8 +52,8 @@ export function homeMetadata(locale: Locale) {
       ? "Mehrdad Afshari | KI- & Softwareentwickler in Deutschland"
       : "Mehrdad Afshari | AI & Software Developer in Germany",
     locale === "de"
-      ? "Portfolio von Mehrdad Afshari, KI- und Softwareentwickler und Informatik-Masterstudent in Rostock. Projekte zu Generative AI, RAG, Python, Next.js, .NET und SQL Server."
-      : "Portfolio of Mehrdad Afshari, an AI and software developer and MSc Computer Science student in Rostock, Germany. Projects in Generative AI, RAG, Python, Next.js, .NET and SQL Server.",
+      ? "Portfolio von Mehrdad Afshari, KI- und Softwareentwickler und Informatik-Masterstudent in Rostock. Projekte zu Agentic AI, RAG, lokaler Sprach-KI, Python, FastAPI, Next.js und Cloud Engineering."
+      : "Portfolio of Mehrdad Afshari, an AI and software developer and MSc Computer Science student in Rostock, Germany. Projects in agentic AI, RAG, local speech AI, Python, FastAPI, Next.js and cloud engineering.",
   );
 }
 
