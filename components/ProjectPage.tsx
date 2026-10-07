@@ -13,6 +13,7 @@ export default function ProjectPage({ locale = "en", slug }: { locale?: Locale; 
   const t = getTranslator(locale);
   const project = projects.find((item) => item.id === slug);
   if (!project) notFound();
+  const relatedProjects = projects.filter((item) => item.id !== project.id).slice(0, 3);
 
   const isMeeting = project.id === "ai-meeting-assistant";
   const isSokoban = project.id === "sokoban-solver";
@@ -77,6 +78,19 @@ export default function ProjectPage({ locale = "en", slug }: { locale?: Locale; 
         {project.limitations?.length && <section className="py-14"><h2 className="text-2xl font-semibold">{t("Scope and limitations")}</h2><ul className="mt-6 list-disc space-y-3 pl-5 text-base leading-8 text-gray-600 dark:text-gray-400">{project.limitations.map((text) => <li key={text}>{text}</li>)}</ul></section>}
 
         {project.documentation && <section className="border-t border-black/10 py-10 dark:border-white/10"><h2 className="text-2xl font-semibold">{t("Explore the implementation")}</h2><p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-400">{t("This case study is based on the project’s own documentation.")}</p><div className="mt-6 flex flex-wrap gap-4">{project.documentation.map((item) => <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-black/10 px-4 py-3 text-sm hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/5">{item.label}<ArrowUpRight size={16} /></a>)}</div></section>}
+
+        <section className="border-t border-black/10 py-14 dark:border-white/10">
+          <h2 className="text-2xl font-semibold">{locale === "de" ? "Weitere Projekte" : "More projects"}</h2>
+          <div className="mt-7 grid gap-4 md:grid-cols-3">
+            {relatedProjects.map((item) => (
+              <Link key={item.id} href={localePath(locale, `/projects/${item.id}`)} className="group rounded-2xl border border-black/10 p-5 transition hover:border-blue-500/40 hover:bg-blue-500/5 dark:border-white/10">
+                <p className="text-sm text-blue-600 dark:text-blue-400">{item.type}</p>
+                <h3 className="mt-2 font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-400">{item.shortDescription}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <Link href={`${localePath(locale)}#contact`} className="inline-flex items-center gap-2 font-medium text-blue-600 dark:text-blue-400">{t("Let’s talk about AI and software development")}<ArrowUpRight size={17} /></Link>
       </main>
