@@ -4,7 +4,7 @@ const skillGroups = [
   {
     title: "Applied AI",
     description: "AI technologies demonstrated in hands-on projects, focused on local LLM applications, retrieval, grounded outputs, and practical AI workflows.",
-    skills: ["RAG", "LLMs", "Embeddings", "Vector Search", "FAISS", "Ollama", "faster-whisper", "Prompt Engineering", "Grounded Q&A", "Responsible AI"],
+    skills: ["Agentic AI", "LangGraph", "Tool Calling", "Human-in-the-Loop", "RAG", "LLMs", "Embeddings", "Vector Search", "FAISS", "Ollama", "faster-whisper", "Prompt Engineering", "Grounded Q&A", "Responsible AI"],
   },
   {
     title: "Software Engineering",
@@ -19,7 +19,7 @@ const skillGroups = [
   {
     title: "Engineering Workflow",
     description: "Tools and practices used across professional work and current portfolio projects to build, verify, document, and ship software.",
-    skills: ["Git", "GitHub", "GitHub Actions", "CI", "API Documentation", "Vercel", "Tailwind CSS", "WordPress", "Visual Studio", "VS Code"],
+    skills: ["Git", "GitHub", "GitHub Actions", "CI", "Docker", "Terraform", "AWS", "API Documentation", "Vercel", "Tailwind CSS", "WordPress", "Visual Studio", "VS Code"],
   },
 ];
 
