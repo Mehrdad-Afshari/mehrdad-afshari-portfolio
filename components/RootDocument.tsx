@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import type { Locale } from "@/lib/i18n";
 import "@/app/globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -29,6 +30,7 @@ export default function RootDocument({
           {locale === "de" ? "Zum Inhalt springen" : "Skip to content"}
         </a>
         {children}
+        <Analytics />
       </body>
     </html>
   );
