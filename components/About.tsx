@@ -14,7 +14,7 @@ export default function About({ locale = "en" }: LocaleProps) {
           <div className="space-y-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
             <p>{t("I am a software developer with 13+ years of experience across application development, databases, web development, and enterprise software, currently pursuing an MSc in Computer Science at the University of Rostock, Germany.")}</p>
             <p>{t("My professional background includes .NET business applications, SQL Server database development, business process automation, reporting solutions, and web development. This gives me a strong engineering foundation for building practical, maintainable software.")}</p>
-            <p>{t("I am now extending that foundation into applied AI through hands-on projects in RAG, local LLM applications, embeddings, retrieval, Python backends, and modern TypeScript frontends, while continuing my academic work in computer science.")}</p>
+            <p>{t("I am now extending that foundation into applied AI through hands-on projects in agentic workflows, RAG, local LLM and speech applications, Python/FastAPI backends, and modern TypeScript frontends, while continuing my academic work in computer science.")}</p>
           </div>
 
           <div className="rounded-3xl border border-black/10 bg-white p-8 dark:border-white/10 dark:bg-white/5">
