@@ -11,7 +11,7 @@ export default function Hero({ locale = "en" }: LocaleProps) {
   const proofPoints = [
     ["13+ years", "Software development"],
     ["MSc", "Computer Science · Rostock"],
-    ["4", "Selected case studies"],
+    ["5", "Selected case studies"],
     ["Local-first", "Applied AI projects"],
   ];
 
