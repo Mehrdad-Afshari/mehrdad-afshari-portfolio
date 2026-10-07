@@ -24,8 +24,8 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
     jobTitle: "AI & Software Developer",
     description:
       locale === "de"
-        ? "KI- und Softwareentwickler sowie Masterstudent der Informatik an der Universität Rostock mit Schwerpunkt auf Generative AI, RAG und Softwareentwicklung."
-        : "AI and software developer and MSc Computer Science student at the University of Rostock, focused on Generative AI, RAG and software development.",
+        ? "KI- und Softwareentwickler sowie Masterstudent der Informatik an der Universität Rostock mit Schwerpunkt auf Agentic AI, Generative AI, RAG und produktionsorientierter Softwareentwicklung."
+        : "AI and software developer and MSc Computer Science student at the University of Rostock, focused on agentic AI, Generative AI, RAG and production-oriented software engineering.",
     sameAs: [
       "https://github.com/Mehrdad-Afshari",
       "https://linkedin.com/in/mehrdadafshari",
@@ -48,6 +48,11 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
       "Large Language Models",
       "Retrieval-Augmented Generation",
       "AI Agents",
+      "Agentic AI",
+      "Speech AI",
+      "FastAPI",
+      "Cloud Engineering",
+      "AWS",
       "Software Development",
       "Python",
       "C#",
