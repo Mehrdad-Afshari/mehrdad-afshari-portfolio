@@ -1,8 +1,9 @@
-import { Inter } from "next/font/google";
+import { Inter, Vazirmatn } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import type { Locale } from "@/lib/i18n";
 import "@/app/globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const vazirmatn = Vazirmatn({ subsets: ["arabic"], variable: "--font-vazirmatn", display: "swap" });
 
 export default function RootDocument({
   children,
@@ -22,7 +23,7 @@ export default function RootDocument({
           }}
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} ${vazirmatn.variable} antialiased`}>
         <a
           href="#main-content"
           className="sr-only fixed left-4 top-4 z-[100] rounded-lg bg-blue-600 px-5 py-3 text-white focus:not-sr-only"
