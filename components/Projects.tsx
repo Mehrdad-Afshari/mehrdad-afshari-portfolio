@@ -25,6 +25,8 @@ export default function Projects({ locale = "en" }: LocaleProps) {
                 ? (locale === "de" ? "Von Sprache zu Wissen" : "From speech to knowledge")
                 : project.id === "ai-job-application-assistant"
                   ? (locale === "de" ? "Von Evidenz zur Bewerbung" : "From evidence to application")
+                  : project.id === "ai-operations-agent"
+                  ? (locale === "de" ? "Vom Auftrag zur kontrollierten Ausführung" : "From request to controlled execution")
                   : t("Inside the RAG pipeline");
             const panelSteps = project.pipeline ?? project.algorithms?.slice(0, 3) ?? [];
             const isSokoban = project.id === "sokoban-solver";
@@ -35,7 +37,9 @@ export default function Projects({ locale = "en" }: LocaleProps) {
               ? (locale === "de" ? "Klassische Zustandsraumsuche mit Deadlock-Erkennung, entwickelt als Universitätsprojekt an der Universität Rostock." : "Classical state-space search with deadlock detection, developed as a university project at the University of Rostock.")
               : isMeeting
                 ? (locale === "de" ? "Lokale Transkription mit faster-whisper, lokale Analyse mit Ollama und persistenter Meeting-Verlauf mit SQLite." : "Local transcription with faster-whisper, local analysis with Ollama, and persistent meeting history with SQLite.")
-                : t("Runs locally with Ollama. No paid AI API required. Setup instructions are available on GitHub.");
+                : project.id === "ai-operations-agent"
+                  ? (locale === "de" ? "Produktionsorientierte Architektur mit Genehmigungen, Audit-Trail und validierter AWS-Infrastruktur als Code; keine aktive AWS-Produktivbereitstellung." : "Production-oriented architecture with approvals, audit trails, and validated AWS infrastructure as code; not a live AWS production deployment.")
+                  : t("Runs locally with Ollama. No paid AI API required. Setup instructions are available on GitHub.");
             return (
               <article key={project.id} className="overflow-hidden rounded-3xl border border-black/10 bg-[#fafafa] dark:border-white/10 dark:bg-[#0d1118]">
                 <div className={hasVisualPanel ? "grid lg:grid-cols-[1.15fr_0.85fr]" : ""}>
