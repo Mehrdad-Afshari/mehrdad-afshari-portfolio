@@ -26,7 +26,7 @@ const descriptions: Record<string, string> = {
   "ai-job-application-assistant": "ابزار تحلیل تطابق رزومه با آگهی شغلی، با امتیازدهی شفاف، بررسی شواهد و تولید متن با محدودیت‌هایی برای جلوگیری از ادعاهای بدون پشتوانه.",
   "ai-knowledge-assistant": "دستیار اسناد مبتنی بر بازیابی اطلاعات و تولید پاسخ (RAG)، با مدل‌های محلی، جستجوی برداری و نمایش منابع پاسخ.",
 };
-const linkStyle = "rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium transition hover:border-blue-300 hover:text-blue-200";
+const linkStyle = "inline-flex min-h-11 items-center justify-center rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium transition hover:border-blue-300 hover:bg-white/10 hover:text-blue-200";
 
 export default function PersianPage() {
   return (
@@ -46,32 +46,32 @@ export default function PersianPage() {
         }}
       />
       <header className="border-b border-white/10 bg-[#080b12] text-white">
-        <nav aria-label="انتخاب زبان" className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-5 sm:px-8">
-          <Link href="/fa" className="font-bold">مهرداد افشاری</Link>
-          <div className="flex items-center gap-3 text-sm sm:gap-5" dir="ltr">
-            <Link href="/" lang="en" className="hover:text-blue-300">English</Link>
-            <Link href="/de" lang="de" className="hover:text-blue-300">Deutsch</Link>
-            <span lang="fa" aria-current="page" className="font-[family-name:var(--font-vazirmatn)] text-blue-300">فارسی</span>
+        <nav aria-label="انتخاب زبان" className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-4 sm:gap-4 sm:px-8 sm:py-5">
+          <Link href="/fa" className="shrink-0 text-sm font-bold sm:text-base">مهرداد افشاری</Link>
+          <div className="flex items-center gap-1 text-xs sm:gap-2 sm:text-sm" dir="ltr">
+            <Link href="/" lang="en" className="inline-flex min-h-11 items-center rounded-lg px-1.5 hover:bg-white/10 hover:text-blue-300 sm:px-2">English</Link>
+            <Link href="/de" lang="de" className="inline-flex min-h-11 items-center rounded-lg px-1.5 hover:bg-white/10 hover:text-blue-300 sm:px-2">Deutsch</Link>
+            <span lang="fa" aria-current="page" className="inline-flex min-h-11 items-center rounded-lg bg-white/10 px-1.5 font-[family-name:var(--font-vazirmatn)] font-semibold text-blue-300 sm:px-2">فارسی</span>
           </div>
         </nav>
       </header>
 
       <main id="main-content" className="min-h-screen bg-[#080b12] text-white">
-        <div className="mx-auto max-w-6xl space-y-20 px-5 py-14 sm:space-y-24 sm:px-8 sm:py-20">
-          <section className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-16">
+        <div className="mx-auto max-w-6xl space-y-16 px-5 py-10 sm:space-y-20 sm:px-8 sm:py-14">
+          <section className="grid items-center gap-9 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-12">
             <div className="min-w-0">
               <p className="text-sm font-medium text-blue-300" dir="ltr">Mehrdad Afshari · Rostock, Germany</p>
               <h1 className="mt-6 text-4xl font-extrabold leading-tight sm:text-6xl">مهرداد افشاری</h1>
               <h2 className="mt-5 text-xl font-medium leading-relaxed text-blue-200 sm:text-2xl">توسعه‌دهنده نرم‌افزار، پایگاه داده و هوش مصنوعی</h2>
-              <p className="mt-7 max-w-3xl text-base leading-loose text-slate-300 sm:text-lg">
+              <p className="mt-6 max-w-3xl text-base leading-loose text-slate-300 sm:text-lg">
                 بیش از ۱۳ سال تجربه حرفه‌ای در توسعه نرم‌افزار و پایگاه داده دارم. اکنون دانشجوی کارشناسی ارشد علوم کامپیوتر در دانشگاه روستوک آلمان هستم و بر توسعه کاربردهای عملی هوش مصنوعی، عامل‌های هوشمند و سامانه‌های نرم‌افزاری مدرن تمرکز دارم.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#projects" className="rounded-full bg-blue-600 px-6 py-3 font-medium transition hover:bg-blue-500">مشاهده پروژه‌ها</a>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <a href="#projects" className="inline-flex min-h-11 items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-medium transition hover:bg-blue-500">مشاهده پروژه‌ها</a>
                 <a href="/cv/mehrdad-afshari-cv.pdf" target="_blank" rel="noopener noreferrer" className={linkStyle}>رزومه انگلیسی (PDF)</a>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-2xl shadow-black/30 lg:max-w-md">
+            <div className="relative mx-auto w-full max-w-[22rem] overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-2xl shadow-black/30 lg:max-w-md">
               <div className="relative aspect-[4/5]">
                 <Image src="/images/mehrdad-afshari.png" alt="تصویر مهرداد افشاری" fill priority sizes="(max-width: 1024px) 90vw, 400px" className="object-cover object-[center_35%]" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
@@ -84,7 +84,7 @@ export default function PersianPage() {
             <p className="mt-3 leading-loose text-slate-200">
               این صفحه، معرفی کوتاه فارسی من است. برای مشاهده همه پروژه‌ها، مطالعات موردی فنی، جزئیات سوابق حرفه‌ای، مهارت‌ها و گواهینامه‌ها، نسخه‌های کامل انگلیسی و آلمانی سایت را ببینید.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/" lang="en" className={linkStyle}>نسخه کامل انگلیسی <span dir="ltr" className="inline-block">↗</span></Link>
               <Link href="/de" lang="de" className={linkStyle}>نسخه کامل آلمانی <span dir="ltr" className="inline-block">↗</span></Link>
             </div>
