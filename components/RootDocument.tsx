@@ -12,7 +12,7 @@ export default function RootDocument({
   locale: Locale;
 }) {
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"} suppressHydrationWarning>
       {/* Shared App Router root layout: a native head element is required here. */}
       {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
@@ -27,7 +27,7 @@ export default function RootDocument({
           href="#main-content"
           className="sr-only fixed left-4 top-4 z-[100] rounded-lg bg-blue-600 px-5 py-3 text-white focus:not-sr-only"
         >
-          {locale === "de" ? "Zum Inhalt springen" : "Skip to content"}
+          {locale === "de" ? "Zum Inhalt springen" : locale === "fa" ? "رفتن به محتوای اصلی" : "Skip to content"}
         </a>
         {children}
         <Analytics />

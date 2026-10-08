@@ -74,7 +74,7 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
             "@id": `${siteUrl}/#website`,
             name: "Mehrdad Afshari",
             url: siteUrl,
-            inLanguage: ["en", "de"],
+            inLanguage: ["en", "de", "fa"],
             author: { "@id": `${siteUrl}/#person` },
           },
           {

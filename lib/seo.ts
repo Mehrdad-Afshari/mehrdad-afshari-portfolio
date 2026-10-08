@@ -22,6 +22,7 @@ export function pageMetadata(
       languages: {
         en: localePath("en", path),
         de: localePath("de", path),
+        ...(path === "/" ? { fa: localePath("fa", path) } : {}),
         "x-default": localePath("en", path),
       },
     },
@@ -31,7 +32,7 @@ export function pageMetadata(
       siteName: "Mehrdad Afshari",
       title,
       description,
-      locale: locale === "de" ? "de_DE" : "en_GB",
+      locale: locale === "de" ? "de_DE" : locale === "fa" ? "fa_IR" : "en_GB",
       alternateLocale: [locale === "de" ? "en_GB" : "de_DE"],
       images: [{ url: image, width: 1200, height: 630, alt: title }],
     },
