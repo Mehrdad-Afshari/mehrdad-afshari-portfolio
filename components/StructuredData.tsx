@@ -19,6 +19,7 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
     "@type": "Person",
     "@id": `${siteUrl}/#person`,
     name: "Mehrdad Afshari",
+    alternateName: ["مهرداد افشاری", "Mehrdad Afshari"],
     url: siteUrl,
     image: `${siteUrl}/images/mehrdad-afshari.png`,
     jobTitle: "AI & Software Developer",
