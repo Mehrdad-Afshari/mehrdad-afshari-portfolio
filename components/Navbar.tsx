@@ -34,7 +34,7 @@ export default function Navbar({ locale = "en", path = "/" }: { locale?: Locale;
         <div className="flex items-center gap-2">
           <div aria-label={de ? "Sprache" : "Language"} className="flex rounded-full border border-black/15 p-1 text-sm dark:border-white/20">
             {(["en", "de", "fa"] as const).map((language) => (
-              <a key={language} href={localePath(language, path)} hrefLang={language} lang={language} aria-label={language === "en" ? "English" : language === "de" ? "Deutsch" : "فارسی"} aria-current={locale === language ? "page" : undefined} onClick={(event) => { event.currentTarget.href = localePath(language, path) + window.location.search + window.location.hash; }} className={`rounded-full px-3 py-2 ${locale === language ? "bg-blue-600 text-white" : "hover:bg-black/5 dark:hover:bg-white/10"}`}>
+              <a key={language} href={localePath(language, path)} hrefLang={language} lang={language} aria-label={language === "en" ? "English" : language === "de" ? "Deutsch" : "فارسی"} aria-current={locale === language ? "page" : undefined} onClick={(event) => { event.currentTarget.href = localePath(language, path) + window.location.search + window.location.hash; }} className={`rounded-full px-3 py-2 ${language === "fa" ? "font-[family-name:var(--font-vazirmatn)]" : ""} ${locale === language ? "bg-blue-600 text-white" : "hover:bg-black/5 dark:hover:bg-white/10"}`}>
                 <span className="sm:hidden">{language.toUpperCase()}</span><span className="hidden sm:inline">{language === "en" ? "English" : language === "de" ? "Deutsch" : "فارسی"}</span>
               </a>
             ))}
