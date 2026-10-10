@@ -87,7 +87,7 @@ export function HomeStructuredData({ locale }: { locale: Locale }) {
                 ? "Mehrdad Afshari – KI- & Softwareentwickler"
                 : "Mehrdad Afshari – AI & Software Developer",
             inLanguage: locale,
-            mainEntity: { "@id": `${siteUrl}/#person` },
+            mainEntity: { "@type": "Person", "@id": `${siteUrl}/#person`, name: "Mehrdad Afshari", alternateName: "مهرداد افشاری", url: siteUrl },
             isPartOf: { "@id": `${siteUrl}/#website` },
           },
         ],
