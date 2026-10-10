@@ -41,7 +41,13 @@ export default function PersianPage() {
             url: siteUrl + "/fa",
             name: "مهرداد افشاری | توسعه‌دهنده نرم‌افزار و هوش مصنوعی",
             inLanguage: "fa",
-            mainEntity: { "@id": siteUrl + "/#person" },
+            mainEntity: {
+              "@type": "Person",
+              "@id": siteUrl + "/#person",
+              name: "Mehrdad Afshari",
+              alternateName: "مهرداد افشاری",
+              url: siteUrl,
+            },
           }),
         }}
       />
