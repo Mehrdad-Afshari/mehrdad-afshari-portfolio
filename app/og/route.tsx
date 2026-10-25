@@ -4,9 +4,10 @@ import { getProjects } from "@/data/localized-projects";
 export const runtime = "nodejs";
 export async function GET(request: Request) {
   const query = new URL(request.url).searchParams;
-  const locale = query.get("lang") === "de" ? "de" : "en";
+  const requestedLocale = query.get("lang");
+  const locale = requestedLocale === "de" ? "de" : requestedLocale === "fa" ? "fa" : "en";
   const projectId = query.get("project");
-  const project = getProjects(locale).find((item) => item.id === projectId);
+  const project = getProjects(locale === "fa" ? "en" : locale).find((item) => item.id === projectId);
   if (projectId && !project) return new Response("Not found", { status: 404 });
   return new ImageResponse(
     <div
@@ -30,17 +31,17 @@ export async function GET(request: Request) {
           {project?.title ??
             (locale === "de"
               ? "KI- & Softwareentwickler"
-              : "AI & Software Developer")}
+              : locale === "fa" ? "AI & Software Developer · Persian Portfolio" : "AI & Software Developer")}
         </div>
         <div style={{ fontSize: 30, color: "#cbd5e1", lineHeight: 1.4 }}>
           {project?.shortDescription ??
             (locale === "de"
               ? "Lokale KI. Praktische Software. Informatik an der Universität Rostock."
-              : "Local AI. Practical software. Computer Science at the University of Rostock.")}
+              : locale === "fa" ? "Applied AI, software engineering and projects · فارسی" : "Local AI. Practical software. Computer Science at the University of Rostock.")}
         </div>
       </div>
       <div style={{ display: "flex", fontSize: 24, color: "#93c5fd" }}>
-        mehrdad-afshari.de{locale === "de" ? "/de" : ""}
+        mehrdad-afshari.de{locale === "de" ? "/de" : locale === "fa" ? "/fa" : ""}
       </div>
     </div>,
     {
