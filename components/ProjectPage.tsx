@@ -39,6 +39,15 @@ export default function ProjectPage({ locale = "en", slug }: { locale?: Locale; 
           <ArrowLeft size={16} />{t("All projects")}
         </Link>
 
+        <nav aria-label={locale === "de" ? "Sprachversion dieser Projektseite" : "Project page languages"} className="mt-7 flex flex-wrap items-center gap-3 text-sm">
+          <span className="text-gray-500 dark:text-gray-400">{locale === "de" ? "Auch verfügbar auf:" : "Also available in:"}</span>
+          {locale === "de" ? (
+            <Link href={localePath("en", `/projects/${project.id}`)} hrefLang="en" lang="en" className="rounded-full border border-black/15 px-4 py-2.5 font-medium hover:border-blue-500 dark:border-white/20">English case study →</Link>
+          ) : (
+            <Link href={localePath("de", `/projects/${project.id}`)} hrefLang="de" lang="de" className="rounded-full border border-black/15 px-4 py-2.5 font-medium hover:border-blue-500 dark:border-white/20">Deutsche Projektbeschreibung →</Link>
+          )}
+        </nav>
+
         <header className="border-b border-black/10 pb-12 pt-10 dark:border-white/10">
           <p className="text-sm font-medium text-blue-600 dark:text-blue-400">{project.type}{project.version ? ` / ${project.version}` : ""}</p>
           <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">{project.title}</h1>
