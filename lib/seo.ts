@@ -33,7 +33,9 @@ export function pageMetadata(
       title,
       description,
       locale: locale === "de" ? "de_DE" : locale === "fa" ? "fa_IR" : "en_GB",
-      alternateLocale: [locale === "de" ? "en_GB" : "de_DE"],
+      alternateLocale: (["en_GB", "de_DE", "fa_IR"] as const).filter(
+        (candidate) => candidate !== (locale === "de" ? "de_DE" : locale === "fa" ? "fa_IR" : "en_GB"),
+      ),
       images: [{ url: image, width: 1200, height: 630, alt: title }],
     },
     twitter: {
